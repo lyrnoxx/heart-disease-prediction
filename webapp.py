@@ -4,10 +4,10 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 # Load trained models
-models = [joblib.load(f'{model}_classifier.joblib') for model in ['knn', 'svc', 'dt', 'rf']]
+models = [joblib.load(f'trained-models/{model}_classifier.joblib') for model in ['knn', 'svc', 'dt', 'rf']]
 
 # Load and preprocess dataset
-dataset = pd.read_csv('processed_dataset.csv').drop('target', axis=1)
+dataset = pd.read_csv('datasets/processed_dataset.csv').drop('target', axis=1)
 standardScaler = StandardScaler()
 columns_to_scale = ['age', 'trestbps', 'chol','thalach', 'oldpeak']
 dataset[columns_to_scale] = standardScaler.fit_transform(dataset[columns_to_scale])
